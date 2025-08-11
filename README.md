@@ -5,9 +5,7 @@
 Seed the database by running:
 
 ```bash
-Update-Database \
-  -Project Infrastructure \
-  -StartupProject App
+Update-Database -Project Infrastructure -StartupProject App
 ```
 
 ---
@@ -42,9 +40,6 @@ tests/Unit.Tests/Application/CanSubmitVacationRequestHandlerTests.cs
 
 ### Task 6
 
-Suggested caching strategies to reduce database round-trips:
-
-In-memory cache  
-Cache rarely changing data (e.g., vacation packages) for the lifetime of the application.
+Introduce caching (in memory or distributed) for rarely changing data for exaple vacation packages.
 
 ---

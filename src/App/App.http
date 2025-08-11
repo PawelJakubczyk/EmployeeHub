@@ -1,0 +1,48 @@
+@App_HostAddress = https://localhost:56089
+
+### Task 2a: Returns a list of all employees from the team named ".NET" who have at least one 
+### vacation request in 2019.
+@dotnetTeam = "dotnet"
+@vacationYear = 2019
+
+GET {{App_HostAddress}}/api/employees/team?teamName={{dotnetTeam}}&year={{vacationYear}}
+Accept: application/json
+
+###
+
+### Task 2b: Returns a list of employees with the number of vacation days used in the current year
+### (used days are all days in vacation requests that are entirely in the past).
+
+GET {{App_HostAddress}}/api/employees/with-used-vacation-days
+Accept: application/json
+
+###
+
+### Task 2c: Returns a list of teams where employees have not yet submitted any 
+### vacation days in 2019.
+
+GET {{App_HostAddress}}/api/employees/teams-without-vacations?year={{vacationYear}}
+Accept: application/json
+
+### 
+
+### Task 3: Implement a C# method that calculates how many vacation days an employee 
+### has left to use in the current year.
+
+@employeeId = 1
+
+GET {{App_HostAddress}}/api/employees/{{employeeId}}/remaining-vacation-days
+Accept: application/json
+### 
+
+### Task 4: Based on task 3, write a method that checks if an employee can submit 
+### a vacation request.
+
+POST {{App_HostAddress}}/api/employees/{{employeeId}}/can-submit-vacation-request
+Accept: application/json
+Content-Type: application/json
+
+{
+    "year": 2024,
+    "requestedDays": 5
+}   
